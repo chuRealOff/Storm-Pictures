@@ -12,7 +12,10 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Storm Viewer"
+        
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
@@ -32,6 +35,8 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
         cell.textLabel?.text = pictures[indexPath.row]
+        // added disclosure indicators on the right side of the table view screen
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
@@ -43,8 +48,8 @@ class ViewController: UITableViewController {
         }
     }
     
-
     
-
+    
+    
 }
 
